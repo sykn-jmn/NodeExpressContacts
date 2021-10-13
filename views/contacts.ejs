@@ -1,0 +1,33 @@
+<form action="http://localhost:3000/addContact" method="post">
+    <div>
+        <label for="firstname">First Name</label>
+        <input type="text" id="firstname" name="firstname">
+    </div>
+    <div>
+        <label for="lastname">Last Name</label>
+        <input type="text" id="lastname" name="lastname">
+    </div>
+    <input type="submit">
+</form>
+
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        <% contacts.forEach(i => {%>
+        <tr>
+            <th><%= i.id %></th>
+            <th><%= i.firstname %></th>
+            <th><%= i.lastname %></th>
+            <th><button onclick="deleteContact('<%= i.id %>')">Delete</button></th>
+        </tr>
+        <% })%>
+    </tbody>
+</table>

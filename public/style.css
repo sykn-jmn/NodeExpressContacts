@@ -1,0 +1,22 @@
+th{
+    padding: 5px 10px;
+}
+thead th{
+    font-weight:bold;
+}
+thead{
+    padding-bottom: 15px;
+}
+tbody th {
+    font-weight:normal;
+    text-align: left;
+}
+
+form{
+    margin: 30px 15px;
+}
+
+div{
+    width: 200px;
+    margin-bottom: 10px;
+}
