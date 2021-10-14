@@ -1,5 +1,18 @@
+body{
+    background: darkgray;
+    font-family: 'Roboto', sans-serif;
+}
+
+h2{
+    font-family: 'Open Sans', sans-serif;
+    width: fit-content;
+    margin: 10px 0px 0px 15px;
+    font-weight: 1000;
+}
 th{
-    padding: 5px 10px;
+    padding: 10px 10px;
+    border-style: none;
+    border-width: 0ch;
 }
 thead th{
     font-weight:bold;
@@ -12,11 +25,67 @@ tbody th {
     text-align: left;
 }
 
-form{
-    margin: 30px 15px;
+tbody tr:hover {
+    background:lightgray;
 }
 
-div{
-    width: 200px;
-    margin-bottom: 10px;
+.contacts{
+    padding: 15px 20px 0px 20px;
+}
+
+.container{
+    margin: 20px;
+    background: white;
+    max-width: fit-content;
+    border-radius: 25px;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+
+.newcontactform{
+    padding: 15px;
+    border-radius: 25px;
+}
+
+.formrow{
+    width: fit-content;
+    padding: 7px 0px;
+}
+
+label{
+    margin-right: 10px;
+}
+
+.textinput{
+    border-left: white;
+    border-right: white;
+    border-top: white;
+    border-bottom: 1 solid black;
+    padding: 7px 11px 2px 7px;
+}
+
+.button{
+    background: lightgray;
+    color: black;
+    font-weight:800;
+    border-style: hidden;
+    padding: 4px 11px;
+    border-radius: 5px;
+}
+
+
+
+.button:hover{
+    background: darkgray;
+    color: white;
+}
+
+.button:active{
+    background:lightgray;
+    color:black;
+}
+
+#submit{
+    padding: 8px 18px;;
 }

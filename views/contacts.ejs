@@ -1,33 +1,45 @@
-<form action="http://localhost:3000/addContact" method="post">
-    <div>
-        <label for="firstname">First Name</label>
-        <input type="text" id="firstname" name="firstname">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: center;">
+    <div class="container">
+        <h2>New Contact</h2>
+        <div class="newcontactform">
+            <form action="http://localhost:3000/addContact" method="post">
+                <div class="formrow">
+                    <label for="firstname">First Name</label>
+                    <input type="text" id="firstname" name="firstname" class="textinput">
+                </div>
+                <div class="formrow">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" name="lastname" class="textinput">
+                </div>
+                <div class="formrow">
+                    <input type="submit" class="button" id="submit">
+                </div>
+            </form>
+        </div>
     </div>
-    <div>
-        <label for="lastname">Last Name</label>
-        <input type="text" id="lastname" name="lastname">
+    <div class="container">
+        <h2>Contacts</h2>
+        <div class="contacts">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <% contacts.forEach(i => {%>
+                    <tr>
+                        <th><%= i.id %></th>
+                        <th><%= i.firstname %></th>
+                        <th><%= i.lastname %></th>
+                        <th><button onclick="deleteContact('<%= i.id %>')" class="button">x</button></th>
+                    </tr>
+                    <% })%>
+                </tbody>
+            </table>
+        </div>
     </div>
-    <input type="submit">
-</form>
-
-
-<table>
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-        </tr>
-
-    </thead>
-    <tbody>
-        <% contacts.forEach(i => {%>
-        <tr>
-            <th><%= i.id %></th>
-            <th><%= i.firstname %></th>
-            <th><%= i.lastname %></th>
-            <th><button onclick="deleteContact('<%= i.id %>')">Delete</button></th>
-        </tr>
-        <% })%>
-    </tbody>
-</table>
+</div>
