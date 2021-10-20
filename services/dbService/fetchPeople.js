@@ -2,7 +2,7 @@ const db = require("./dbPool")
 
 module.exports = async() => {
     const query = await db.query(
-        'SELECT * FROM people'
+        'SELECT id, firstname, lastname FROM people'
     )
     return query.rows
 }

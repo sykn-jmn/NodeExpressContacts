@@ -1,0 +1,20 @@
+<div class="container upsert">
+    <h2>Update Contact</h2>
+    <form class="person-form">
+        <input type="hidden" name = "id" value = "<%- id %>">
+        <div class="formrow">
+            <label for="firstname">First Name</label>
+            <input type="text" id="firstname" name="firstname" class="textinput" value="<%- firstname %>">
+        </div>
+        <div class="formrow">
+            <label for="lastname">Last Name</label>
+            <input type="text" id="lastname" name="lastname" class="textinput" value="<%- lastname %>">
+        </div>
+        <div class="formrow" >
+            <input type="submit" class="button newContact" >
+            <input type="button" class="button newContact" id="closeNewContact" value="Close">
+        </div>
+        <div id="msg">Saved</div>
+    </form>
+</div>
+<script src="/person-form.js"></script>

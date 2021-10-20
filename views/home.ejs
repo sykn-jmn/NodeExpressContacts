@@ -12,7 +12,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@700&display=swap" rel="stylesheet"> 
 </head>
 <body>
-    <%- include('contacts') %>
+    <div id="loading">Loading</div>
+    <div style="display: flex; flex-wrap: wrap; align-items: flex-start;">
+        <%- include('contacts') %>
+        <div id="content"></div>
+    </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src='/app.js'></script>
 </html>

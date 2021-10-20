@@ -1,6 +1,10 @@
+html,body{
+    height:100%
+}
 body{
-    background: darkgray;
+    background: #ececec;
     font-family: 'Roboto', sans-serif;
+    position: relative;
 }
 
 h2{
@@ -10,7 +14,7 @@ h2{
     font-weight: 1000;
 }
 th{
-    padding: 10px 10px;
+    padding: 10px 10px; 
     border-style: none;
     border-width: 0ch;
 }
@@ -36,14 +40,14 @@ tbody tr:hover {
 .container{
     margin: 20px;
     background: white;
-    max-width: fit-content;
     border-radius: 25px;
     padding: 20px;
     flex-grow: 1;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 
-.newcontactform{
+.person-form{
     padding: 15px;
     border-radius: 25px;
 }
@@ -67,7 +71,7 @@ label{
 
 .button{
     background: lightgray;
-    color: black;
+    color: #555555;
     font-weight:800;
     border-style: hidden;
     padding: 4px 11px;
@@ -77,8 +81,8 @@ label{
 
 
 .button:hover{
-    background: darkgray;
-    color: white;
+    background: #a9a9a9;
+    color: #222222;
 }
 
 .button:active{
@@ -86,6 +90,29 @@ label{
     color:black;
 }
 
-#submit{
-    padding: 8px 18px;;
+.newContact{
+    padding: 8px 18px;
 }
+
+#msg{
+    font-weight: bold;
+    display: none;
+    color: green;
+}
+
+#loading {
+    position: absolute;
+    top: 45px;
+    left: 280px;
+    font-weight: bold;
+    display: none;
+    padding: 10px;
+    background-color: darkcyan;
+    color: white;
+    border-radius: 8px;
+}
+
+#content {
+    display: none;
+}
+
