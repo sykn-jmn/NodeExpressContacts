@@ -1,17 +1,21 @@
 const db = require("./dbPool")
 
-module.exports = async({id,firstname, lastname}) => {
+module.exports = async({id,firstname, lastname, emailAddresses}) => {
+    if(typeof emailAddresses === 'string'){
+        emailAddresses = [emailAddresses]
+    }
     const toInsert = !id
     if (toInsert){
-        db.query(
-            `INSERT INTO people(firstname, lastname) VALUES ($1, $2)`,
-            [firstname, lastname]
+        const query = await db.query(
+            `INSERT INTO people(firstname, lastname, emailaddresses) VALUES ($1, $2, $3)`,
+            [firstname, lastname, emailAddresses]
         )
+        console.log(query.rows);
     }else{
         db.query(
-            `UPDATE people SET firstname = $1, lastname = $2
-            WHERE id = $3`,
-            [firstname, lastname, id]
+            `UPDATE people SET firstname = $1, lastname = $2, emailaddresses = $3
+            WHERE id = $4`,
+            [firstname, lastname, emailAddresses, id]
         )
     }
 }

@@ -8,11 +8,10 @@ route
         const contacts  = await fetchPeople()
         response.render("home", {contacts})
     })
-    .delete('/deleteContact/:id', async(request, response)=>{
+    .delete('/delete/:id', async(request, response)=>{
         id = request.params.id;
         await deletePeople(id);
-        const contacts = await fetchPeople();
-        response.render("home",{contacts})
+        response.sendStatus(204);
     })
     .post('/addContact', async(request,response)=>{
         var firstname = request.body.firstname;

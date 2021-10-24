@@ -10,15 +10,17 @@ route
         {
             id:null,
             firstname:null,
-            lastname:null
+            lastname:null,
+            emailaddresses:null
         })
     })
     .get('/:id', async (request,response)=>{
         const { id } = request.params
         const data = await fetchPerson(id)
-        response.render('person', data)
+        response.render('person', data);
     })
     .post('/',async (request,response)=>{
+        console.log(request.body);
         await upsertPerson(request.body)
         response.end()
     })

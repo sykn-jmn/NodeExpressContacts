@@ -19,7 +19,7 @@ $(function(){
             url:'/contact/' +id,
             success:function(html){
                 $('#content').html(html)
-                $('#content').fadeIn(3000)
+                $('#content').fadeIn()
             }
         })
     })
@@ -29,10 +29,42 @@ $(function(){
             url:'/contact/new',
             success:function(html){
                 $('#content').html(html)
-                $('#content').fadeIn(3000)
+                $('#content').fadeIn()
             }
         })
     })
+
+    $('#addContact').on('click',function(){
+        $.ajax({
+            url:'/contact/new',
+            success:function(html){
+                $('#content').html(html)
+                $('#content').fadeIn()
+            }
+        })
+    })
+
+    $('.deleteContact').on("click",function(e){
+        var btn = $(this);
+        var tr = btn.closest('tr');
+        var id = tr.data('id')
+        $.ajax({
+            url:'contacts/delete/'+id,
+            type: 'DELETE',
+            success:function(){
+                tr.remove();
+            }
+        })
+        return false; 
+    })
+
+    $('.contactsBody tr').mouseenter(function() {
+        $(this).children().last().animate({opacity: '1'},300);
+      })
+      .mouseleave(function() {
+        $(this).children().last().stop();
+        $(this).children().last().css("opacity","0");
+      });
 })
 
 
