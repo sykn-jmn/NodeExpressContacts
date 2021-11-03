@@ -11,7 +11,8 @@ route
             id:null,
             firstname:null,
             lastname:null,
-            emailaddresses:null
+            emailaddresses:null,
+            postaladdresses:null
         })
     })
     .get('/:id', async (request,response)=>{
