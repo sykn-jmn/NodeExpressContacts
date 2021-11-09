@@ -29,15 +29,20 @@ module.exports = async ({id,firstname,lastname,emailAddresses,postaladdresses}) 
         } else {
             db.query(
                 `UPDATE people SET firstname = $1, lastname = $2, emailaddresses = $3
-                WHERE id = $4`,
+                WHERE p_id = $4`,
                 [firstname, lastname, emailAddresses, id]
             )
             postaladdresses.forEach(postaladdress => {
-                db.query(
-                    `UPDATE postaladdresses SET street = $1, city = $2, zipcode = $3
-                WHERE id = $4`,
-                    [postaladdress.street, postaladdress.city, postaladdress.zipcode, postaladdress.id]
-                )
+                if(postaladdress.id == ""){
+                    db.query(`INSERT INTO postaladdresses(street, city, zipcode, p_id) VALUES ($1, $2, $3, $4)`,
+                    [postaladdress.street, postaladdress.city, postaladdress.zipcode, id])
+                }else{
+                    db.query(
+                        `UPDATE postaladdresses SET street = $1, city = $2, zipcode = $3
+                    WHERE id = $4`,
+                        [postaladdress.street, postaladdress.city, postaladdress.zipcode, postaladdress.id]
+                    )
+                }
             });
         }
         await db.query("COMMIT");
