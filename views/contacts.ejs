@@ -16,7 +16,7 @@
                 </thead>
                 <tbody class="contactsBody">
                     <% contacts.forEach(i => {%>
-                    <tr data-id = '<%- i.id %>'>
+                    <tr data-id = '<%- functions.encrypt(i.id) %>'>
                         <th><%= i.id %></th>
                         <th><%= i.firstname %></th>
                         <th><%= i.lastname %></th>

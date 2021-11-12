@@ -8,7 +8,7 @@ module.exports = async(id) => {
 		    p.emailaddresses,
 		    json_agg(
 			json_build_object(
-				'id', pa.id,
+				'id', pa.pa_id,
 				'street', pa.street,
 				'city', pa.city,
 				'zipcode', pa.zipcode

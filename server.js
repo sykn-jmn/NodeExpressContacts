@@ -1,6 +1,7 @@
-
+require('dotenv').config() 
 var express = require('express')
 var bodyParser = require('body-parser')
+const cryptService = require('./services/cryptService')
 const fetchPeople = require('./services/dbService/fetchPeople')
 const addPeople = require('./services/dbService/addPeople')
 const deletePeople = require('./services/dbService/deletePeople')
@@ -16,3 +17,9 @@ server
     })
 
     require('./services/routeService')(server)
+
+server.locals.functions = {
+    encrypt: val => {
+        return cryptService.encrypt(val)
+    }
+}
