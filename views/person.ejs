@@ -1,72 +1,73 @@
-<div class="behind">
-  <div class="container upsert">
-    <h2>Update Contact</h2>
-    <form class="person-form">
-      <input type="hidden" name="id" value="<%- id %>">
-      <div class="formrow">
-        <label for="firstname">First Name</label>
-        <input type="text" id="firstname" name="firstname" class="textinput" value="<%- firstname %>">
-      </div>
-      <div class="formrow">
-        <label for="lastname">Last Name</label>
-        <input type="text" id="lastname" name="lastname" class="textinput" value="<%- lastname %>">
-      </div>
-      <div class="formrow">
-        <table class="ea-tbl">
-          <thead>
-            <tr>
-              <th><a href="javascript:" class="btn btn-primary ea-btn-add"><i class="bi bi-plus"></i></a></th>
-              <th>Email Addresses</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% emailaddresses?.forEach((emailAddress) =>{ %>
-            <tr>
-              <th><a href="javascript:" class="btn btn-primary ea-btn-remove"><i class="bi bi-x"></i></a></th>
-              <th>
-                <input type="text" class="form-control" name="emailAddresses" value="<%= emailAddress %>">
-              </th>
-            </tr>
-            <% }) %>
-          </tbody>
-        </table>
-      </div>
-      <div class="formrow">
-        <table class="pa-tbl">
-          <thead>
-            <th><a href="javascript:" class="btn btn-primary pa-btn-add"><i class="bi bi-plus"></i></a></th>
-            <th>Street</th>
-            <th>City</th>
-            <th>Zipcode</th>
-          </thead>
-          <tbody>
-            <% postaladdresses?.forEach((pa, idx) =>{ %>
-            <tr>
-              <td><a href="javascript:" class="btn btn-primary pa-btn-remove"><i class="bi bi-x"></i></a></td>
-              <td>
-                <input type="hidden" name="postaladdresses[<%= idx %>].id" value="<%= pa.id%>">
-                <input type="text" class="form-control" name="postaladdresses[<%= idx %>].street"
-                  value="<%= pa.street %>">
-              </td>
-              <td>
-                <input type="text" class="form-control" name="postaladdresses[<%= idx %>].city" value="<%= pa.city %>">
-              </td>
-              <td>
-                <input type="text" class="form-control" name="postaladdresses[<%= idx %>].zipcode"
-                  value="<%= pa.zipcode %>">
-              </td>
-
-            </tr>
-            <% }) %>
-          </tbody>
-        </table>
-      </div>
-      <div class="formrow">
-        <input type="submit" class="btn btn-primary newContact">
-        <input type="button" class="btn btn-primary newContact" id="closeNewContact" value="Close">
-      </div>
-      <div id="msg">Saved</div>
-    </form>
+<div js-modules="person-form-js">
+  <div class="behind">
+    <div class="container upsert">
+      <h2>Update Contact</h2>
+      <form class="person-form">
+        <input type="hidden" name="id" value="<%- id %>">
+        <div class="formrow">
+          <label for="firstname">First Name</label>
+          <input type="text" id="firstname" name="firstname" class="textinput" value="<%- firstname %>">
+        </div>
+        <div class="formrow">
+          <label for="lastname">Last Name</label>
+          <input type="text" id="lastname" name="lastname" class="textinput" value="<%- lastname %>">
+        </div>
+        <div class="formrow">
+          <table class="ea-tbl">
+            <thead>
+              <tr>
+                <th><a href="javascript:" class="btn btn-primary ea-btn-add"><i class="bi bi-plus"></i></a></th>
+                <th>Email Addresses</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% emailaddresses?.forEach((emailAddress) =>{ %>
+              <tr>
+                <th><a href="javascript:" class="btn btn-primary ea-btn-remove"><i class="bi bi-x"></i></a></th>
+                <th>
+                  <input type="text" class="form-control" name="emailAddresses" value="<%= emailAddress %>">
+                </th>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+        <div class="formrow">
+          <table class="pa-tbl">
+            <thead>
+              <th><a href="javascript:" class="btn btn-primary pa-btn-add"><i class="bi bi-plus"></i></a></th>
+              <th>Street</th>
+              <th>City</th>
+              <th>Zipcode</th>
+            </thead>
+            <tbody>
+              <% postaladdresses?.forEach((pa, idx) =>{ %>
+              <tr>
+                <td><a href="javascript:" class="btn btn-primary pa-btn-remove"><i class="bi bi-x"></i></a></td>
+                <td>
+                  <input type="hidden" name="postaladdresses[<%= idx %>].id" value="<%= pa.id%>">
+                  <input type="text" class="form-control" name="postaladdresses[<%= idx %>].street"
+                    value="<%= pa.street %>">
+                </td>
+                <td>
+                  <input type="text" class="form-control" name="postaladdresses[<%= idx %>].city" value="<%= pa.city %>">
+                </td>
+                <td>
+                  <input type="text" class="form-control" name="postaladdresses[<%= idx %>].zipcode"
+                    value="<%= pa.zipcode %>">
+                </td>
+  
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        </div>
+        <div class="formrow">
+          <input type="submit" class="btn btn-primary newContact">
+          <input type="button" class="btn btn-primary newContact" id="closeNewContact" value="Close">
+        </div>
+        <div id="msg">Saved</div>
+      </form>
+    </div>
   </div>
 </div>
-<script src="/person-form.js"></script>
