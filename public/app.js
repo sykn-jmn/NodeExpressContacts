@@ -1,57 +1,50 @@
 var modules = {}
 
-$.ajaxSetup({
-    beforeSend: function () {
-        $('#loading').show()
-    },
-    complete: function () {
-        $('#loading').fadeOut(1000)
-    },
-    error: function () {
-        $('#loading').hide()
-    }
-});
+var currentUpdate = null;
 
-$(function () {
+function addJQueryFunctions(){
     $('.peopletbl tbody tr').on('click', function () {
+
+        currentUpdate = $(this);
+    
         var tr = $(this);
+    
         var id = tr.data('id');
+    
         console.log(id);
+    
         location.hash = 'contact/'+id;
     })
 
     $('#addContact').on('click', function () {
-        app.ajax({
-            url: '/contact/new',
-            success: function (html) {
-                $('#content').html(html)
-                $('#content').fadeIn()
-            }
-        })
-    })
 
-    $('#addContact').on('click', function () {
-        app.ajax({
-            url: '/contact/new',
-            success: function (html) {
-                $('#content').html(html)
-                $('#content').fadeIn()
-            }
-        })
+        location.hash = 'contact/new'
     })
 
     $('.deleteContact').on("click", function (e) {
+    
         var btn = $(this);
+    
         var tr = btn.closest('tr');
+    
         var children = tr.children();
-        var firstname = children.eq(1).html();
-        var lastname = children.eq(2).html();
+    
+        var firstname = children.eq(0).html();
+    
+        var lastname = children.eq(1).html();
+    
         var id = tr.data('id');
+    
         if (confirm(`Do you wish to continue deleting ${firstname} ${lastname}`)) {
+    
             app.ajax({
-                url: 'contacts/delete/' + id,
+    
+                url: '/delete/' + id,
+    
                 type: 'DELETE',
+    
                 success: function () {
+    
                     tr.remove();
                 }
             })
@@ -60,23 +53,70 @@ $(function () {
     })
 
     $('.contactsBody tr').mouseenter(function () {
-            $(this).children().last().animate({
-                opacity: '1'
-            }, 300);
-        })
-        .mouseleave(function () {
-            $(this).children().last().stop();
-            $(this).children().last().css("opacity", "0");
-        });
-})
+    
+        $(this).children().last().animate({
+    
+            opacity: '1'
+        }, 300);
+    }).mouseleave(function () {
+      
+        $(this).children().last().stop();
+      
+        $(this).children().last().css("opacity", "0");      
+    });
+}
+
+$.ajaxSetup({
+
+    beforeSend: function () {
+    
+        $('#loading').show()
+    },
+    
+    complete: function () {
+    
+        $('#loading').fadeOut(1000)
+    },
+    
+    error: function () {
+    
+        $('#loading').hide()
+    }
+});
+
+$(addJQueryFunctions());
 
 window.onhashchange = function(){
+
     var hash = location.hash.replace('#','');
-    if(!hash) return;
+    
+    if(!hash) {
+
+        app.ajax({
+    
+            url: location.origin+"/update",
+        
+            success: function (html) {
+        
+                $('#contactsContainer').html(html)
+
+                addJQueryFunctions();
+            }
+        })
+
+        $('#content').fadeOut()
+
+        return;
+    }
+    
     app.ajax({
+    
         url: hash,
+    
         success: function (html) {
+    
             $('#content').html(html)
+    
             $('#content').fadeIn()
         }
     })
@@ -84,13 +124,19 @@ window.onhashchange = function(){
 
 
 function deleteContact(id) {
+    
     const Http = new XMLHttpRequest();
+    
     const url = 'http://localhost:3000/deleteContact/' + id;
+    
     Http.open("DELETE", url);
+    
     Http.send();
 
     Http.onreadystatechange = (e) => {
+    
         window.location.href = Http.responseText;
+    
         console.log(Http.responseText)
     }
 }

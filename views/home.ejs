@@ -12,7 +12,9 @@
 <body>
     <div id="loading">Loading</div>
     <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center;">
-        <%- include('contacts') %>
+        <div id="contactsContainer">
+            <%- include('contacts') %>
+        </div>
         <div id="content" style="position: absolute ;top: 0;left: 0;"></div>
     </div>
 </body>

@@ -8,7 +8,6 @@
             <table class="peopletbl">
                 <thead>
                     <tr>
-                        <th>ID</th>
                         <th>First Name</th>
                         <th>Last Name</th>
                     </tr>
@@ -17,7 +16,6 @@
                 <tbody class="contactsBody">
                     <% contacts.forEach(i => {%>
                     <tr data-id = '<%- functions.encrypt(i.id) %>'>
-                        <th><%= i.id %></th>
                         <th><%= i.firstname %></th>
                         <th><%= i.lastname %></th>
                         <th style="opacity: 0;"><button class="btn btn-primary deleteContact"><i class="bi bi-x"></i></button></th>

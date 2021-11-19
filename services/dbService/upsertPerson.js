@@ -11,7 +11,7 @@ module.exports = async ({id,firstname,lastname,emailAddresses,postaladdresses}) 
     let db = null;
 
     try {
-        const db = await dbPool.connect()
+        db = await dbPool.connect()
     
         await db.query("BEGIN")
         if (id=="") {

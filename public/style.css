@@ -12,9 +12,12 @@ h2{
     font-weight: 1000;
 }
 th{
-    padding: 10px 10px; 
+    padding: 10px 10px;
     border-style: none;
     border-width: 0ch;
+}
+.person-form th{
+    padding: 10px 10px 12px 0px;
 }
 thead th{
     font-weight:bold;
@@ -58,12 +61,12 @@ tbody th {
     width: 100vw;
     height: 100vh;
     display: flex;
-    align-items: center; 
+    align-items: flex-start;
     justify-content: center;
 }
 
-
 .person-form{
+    width: 500px;
     padding: 15px;
     border-radius: 25px;
 }
@@ -83,6 +86,7 @@ label{
     border-top: white;
     border-bottom: 1 solid black;
     padding: 7px 11px 2px 7px;
+    width: 340px;
 }
 
 .newContact{

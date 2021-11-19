@@ -36,6 +36,11 @@ module.exports = server => {
                 route = route.substring(0, route.length - 6) || '/';
             }
 
+            if (route === "/contacts"){
+
+                route = "";
+            }
+
             console.log(`${fileName} => ${route}`);
 
             server.use(route, require(fileName));
