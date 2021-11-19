@@ -1,13 +1,13 @@
-const fetchPerson = require('../services/dbService/fetchPerson')
-const upsertPerson = require('../services/dbService/upsertPerson')
+const fetchPerson = require('../../services/dbService/fetchPerson')
+const upsertPerson = require('../../services/dbService/upsertPerson')
 
 const route = require('express').Router()
-const cryptService = require('../services/cryptService')
-const decryptIdMid = require('../services/middleware/decryptIdMid')
+const cryptService = require('../../services/cryptService')
+const decryptIdMid = require('../../services/middleware/decryptIdMid')
 
 route
     .get('/new', (request,response)=>{
-        response.render('person',
+        response.send(
         {
             id:null,
             firstname:null,
@@ -20,7 +20,7 @@ route
         const { id } = request.params
         const data = await fetchPerson(id)
         console.log(data);
-        response.render('person', data);
+        response.send(data);
     })
     .post('/',async (request,response)=>{
         console.log(request.body);

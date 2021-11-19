@@ -12,7 +12,7 @@ server
     .set('view engine','ejs')
     .use(express.static('public'))
     .use(bodyParser.urlencoded({extended: true}))
-    .listen(3000,()=>{
+    .listen(3001,()=>{
         console.log('server is running')
     })
 

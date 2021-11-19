@@ -70,8 +70,8 @@ module.exports = server => {
                 route = route.substring(0, route.length - 6) || '/';
             }
 
-            if(route == "/contacts"){
-                route = '';
+            if(route.includes('/contacts')){
+                route = route.replace('/contacts','');
             }
 
             console.log(`${fileName} => ${route}`);
