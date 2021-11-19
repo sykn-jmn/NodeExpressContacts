@@ -2,6 +2,7 @@ const dbPool = require("./dbPool")
 const { v4: uuidv4 } = require('uuid');
 
 module.exports = async ({id,firstname,lastname,emailAddresses,postaladdresses}) => {
+
     if (typeof emailAddresses === 'string') {
         emailAddresses = [emailAddresses]
     }

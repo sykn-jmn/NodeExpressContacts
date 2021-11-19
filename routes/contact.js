@@ -24,7 +24,9 @@ route
     })
     .post('/',async (request,response)=>{
         console.log(request.body);
+            
         await upsertPerson(request.body)
+
         response.end()
     })
 

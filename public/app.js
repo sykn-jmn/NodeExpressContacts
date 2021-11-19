@@ -78,9 +78,17 @@ $.ajaxSetup({
         $('#loading').fadeOut(1000)
     },
     
-    error: function () {
+    error: function (xhr) {
     
         $('#loading').hide()
+
+        var {responseText} = xhr;
+
+        responseJSON = JSON.parse(responseText);
+
+        var {message} = responseJSON; 
+
+        alert(message);
     }
 });
 
