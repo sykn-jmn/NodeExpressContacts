@@ -39,7 +39,7 @@ modules['person-form-js'] = function(html){
     
     _form.find('.pa-btn-add').on("click", function(){
     
-        var idx = $('.pa-tbl tbody tr').length;
+        var idx = _form.find('.pa-tbl tbody tr').length;
     
         var _html =`<tr>
     
