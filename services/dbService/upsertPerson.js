@@ -1,10 +1,10 @@
 const dbPool = require("./dbPool")
 const { v4: uuidv4 } = require('uuid');
 
-module.exports = async ({id,firstname,lastname,emailAddresses,postaladdresses}) => {
+module.exports = async ({id,firstname,lastname,emailaddresses,postaladdresses}) => {
 
-    if (typeof emailAddresses === 'string') {
-        emailAddresses = [emailAddresses]
+    if (typeof emailaddresses === 'string') {
+        emailaddresses = [emailaddresses]
     }
     if (postaladdresses == undefined){
         postaladdresses = [];
@@ -19,7 +19,7 @@ module.exports = async ({id,firstname,lastname,emailAddresses,postaladdresses}) 
             id = uuidv4();
             await db.query(
                 `INSERT INTO people(firstname, lastname, emailaddresses, p_id) VALUES ($1, $2, $3, $4)`,
-                [firstname, lastname, emailAddresses, id]
+                [firstname, lastname, emailaddresses, id]
             )
 
             postaladdresses.forEach(async postaladdress=>{
@@ -33,7 +33,7 @@ module.exports = async ({id,firstname,lastname,emailAddresses,postaladdresses}) 
             await db.query(
                 `UPDATE people SET firstname = $1, lastname = $2, emailaddresses = $3
                 WHERE p_id = $4`,
-                [firstname, lastname, emailAddresses, id]
+                [firstname, lastname, emailaddresses, id]
             )
 
             const pa_ids = postaladdresses.filter(i => !!i.id && i.id!="").map(i=>`'${i.id}'`).join(',');

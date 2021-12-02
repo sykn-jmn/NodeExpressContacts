@@ -21,5 +21,8 @@ module.exports = async(id) => {
             group by p.p_id, p.firstname, p.lastname, p.emailaddresses`,
         [id] 
     )
+    if(query.rows[0].emailaddresses == null){
+        query.rows[0].emailaddresses = [];
+    }
     return query.rows[0]
 }

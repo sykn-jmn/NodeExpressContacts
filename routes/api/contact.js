@@ -19,12 +19,9 @@ route
     .get('/:id',decryptIdMid, async (request,response)=>{
         const { id } = request.params
         const data = await fetchPerson(id)
-        console.log(data);
         response.send(data);
     })
     .post('/',async (request,response)=>{
-        console.log(request.body);
-            
         await upsertPerson(request.body)
 
         response.end()

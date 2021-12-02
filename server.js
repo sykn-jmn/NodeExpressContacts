@@ -11,7 +11,7 @@ var server = express()
 server
     .set('view engine','ejs')
     .use(express.static('public'))
-    .use(bodyParser.urlencoded({extended: true}))
+    .use(bodyParser.json())
     .listen(3001,()=>{
         console.log('server is running')
     })
